@@ -55,8 +55,6 @@ export function removeAudioNode(id: string) {
 
 export function updateAudioNode(id: string, data: Record<string, any>) {
   const node = nodes.get(id);
-  console.log("updateAudioNode", { id, data, node });
-
   for (const [key, val] of Object.entries(data)) {
     if (node[key] instanceof AudioParam) {
       node[key].value = val;
