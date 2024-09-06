@@ -15,7 +15,7 @@ import "@xyflow/react/dist/style.css";
 import { OscillatorNode } from "./components/OscillatorNode";
 import { VolumeNode } from "./components/VolumeNode";
 import { OutputNode } from "./components/OutputNode";
-import { connect, createAudioNode } from "./audio";
+import { connect, createAudioNode, disconnect, removeAudioNode } from "./audio";
 
 const initialNodes = [
   {
@@ -83,6 +83,17 @@ export default function App() {
         onConnect={onConnect}
         fitView
         nodeTypes={nodeTypes}
+        onNodesDelete={(nodes) => {
+          for (const { id } of nodes) {
+            removeAudioNode(id);
+          }
+        }}
+        onEdgesDelete={(edges) => {
+          for (const item of edges) {
+            const { source, target } = item;
+            disconnect(source, target);
+          }
+        }}
       >
         <Controls />
         <MiniMap />
