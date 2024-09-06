@@ -19,7 +19,7 @@ export function VolumeNode({ id, data }: VolumeNodeProps) {
 
   return (
     <div className={"rounded-md bg-white shadow-xl"}>
-      <Handle type="target" position={Position.Top} />
+      <Handle className="custom-handle" type="target" position={Position.Top} />
 
       <p className={"rounded-t-md p-[4px] bg-blue-500 text-white"}>Volume</p>
       <div className={"flex flex-col p-[4px]"}>
@@ -36,7 +36,11 @@ export function VolumeNode({ id, data }: VolumeNodeProps) {
         <p className={"text-right"}>{gain.toFixed(2)}</p>
       </div>
 
-      <Handle type="source" position={Position.Bottom} />
+      <Handle
+        className="custom-handle"
+        type="source"
+        position={Position.Bottom}
+      />
     </div>
   );
 }

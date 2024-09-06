@@ -12,7 +12,7 @@ export function OutputNode() {
 
   return (
     <div className={"bg-white shadow-xl p-[20px]"}>
-      <Handle type="target" position={Position.Top} />
+      <Handle className="custom-handle" type="target" position={Position.Top} />
 
       <div>
         <p>Output Node</p>

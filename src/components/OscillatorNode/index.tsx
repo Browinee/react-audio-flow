@@ -34,7 +34,11 @@ export function OscillatorNode({ id, data }: OscillatorNodeProps) {
           <option value="square">Square Wave</option>
         </select>
       </div>
-      <Handle type="source" position={Position.Bottom} />
+      <Handle
+        className="custom-handle"
+        type="source"
+        position={Position.Bottom}
+      />
     </div>
   );
 }
