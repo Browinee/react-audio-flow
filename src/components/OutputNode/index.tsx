@@ -1,11 +1,13 @@
 import { Handle, Position } from "@xyflow/react";
 import { useState } from "react";
+import { toggleAudio } from "../../audio";
 
 export function OutputNode() {
   const [isRunning, setIsRuning] = useState(false);
 
-  function toggleAudio() {
+  function toggleAudioHandler() {
     setIsRuning((isRunning) => !isRunning);
+    toggleAudio();
   }
 
   return (
@@ -14,7 +16,7 @@ export function OutputNode() {
 
       <div>
         <p>Output Node</p>
-        <button onClick={toggleAudio}>
+        <button onClick={toggleAudioHandler}>
           {isRunning ? <span role="img">🔈</span> : <span role="img">🔇</span>}
         </button>
       </div>

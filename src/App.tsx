@@ -14,22 +14,23 @@ import "@xyflow/react/dist/style.css";
 import { OscillatorNode } from "./components/OscillatorNode";
 import { VolumeNode } from "./components/VolumeNode";
 import { OutputNode } from "./components/OutputNode";
+import { connect } from "./audio";
 
 const initialNodes = [
   {
-    id: "1",
+    id: "a",
     position: { x: 0, y: 0 },
     data: { frequency: 440, type: "sine" },
     type: "osc",
   },
   {
-    id: "2",
+    id: "b",
     position: { x: 0, y: 300 },
     type: "volume",
     data: { gain: 0.6 },
   },
   {
-    id: "3",
+    id: "c",
     position: { x: 0, y: 500 },
     type: "out",
     data: {},
@@ -49,6 +50,8 @@ export default function App() {
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 
   const onConnect = (params: Connection) => {
+    connect(params.source, params.target);
+
     setEdges((eds) => addEdge(params, eds));
   };
 
