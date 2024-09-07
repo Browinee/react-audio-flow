@@ -4,7 +4,6 @@ import { toggleAudio } from "../../audio";
 
 export function OutputNode() {
   const [isRunning, setIsRuning] = useState(false);
-
   function toggleAudioHandler() {
     setIsRuning((isRunning) => !isRunning);
     toggleAudio();

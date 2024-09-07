@@ -1,20 +1,27 @@
 const context = new AudioContext();
 
 const osc = context.createOscillator();
-osc.frequency.value = 220;
-osc.type = "square";
-osc.start();
 
 const volume = context.createGain();
-volume.gain.value = 0.5;
 
 const out = context.destination;
 
 const nodes = new Map();
 
-nodes.set("a", osc);
-nodes.set("b", volume);
-nodes.set("c", out);
+(function init() {
+  osc.frequency.value = 220;
+  osc.type = "square";
+  osc.start();
+
+  volume.gain.value = 0.5;
+
+  osc.connect(volume);
+  volume.connect(out);
+
+  nodes.set("a", osc);
+  nodes.set("b", volume);
+  nodes.set("c", out);
+})();
 
 export function isRunning() {
   return context.state === "running";
